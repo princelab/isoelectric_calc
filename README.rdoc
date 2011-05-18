@@ -1,5 +1,6 @@
 = isoelectic_calc_and_hist
-
+Implementation of a bisection pI calculator for Ruby.  Also included here is a graphing feature of a database via R.  The data accepted is a peptide centric database generated for the use of spectral counting (and available in the ms-quant gem)
+http://isoelectric.ovh.org/files/practise-isoelectric-point.html#mozTocId496531
 Description goes here.
 
 == Contributing to isoelectic_calc_and_hist
@@ -14,6 +15,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Ryan Taylor. See LICENSE.txt for
+Copyright (c) 2011 Brigham Young University. See LICENSE.txt for
 further details.
 
