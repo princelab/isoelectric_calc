@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby 
+# http://isoelectric.ovh.org/files/practise-isoelectric-point.html#mozTocId496531
 
 require 'yaml'
 require 'lookup_table'
