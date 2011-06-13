@@ -3,8 +3,6 @@
 require 'yaml'
 require 'rserve/simpler'
 pi_values = YAML.load_file(ARGV.shift)
-p pi_values.class
-p pi_values.first
 hash = {}
 hash['pi'] = []
 hash['pi'] = pi_values
