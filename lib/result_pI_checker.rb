@@ -19,7 +19,6 @@ end
 def pepids_to_pIs(pepid_arr)
 	require 'isoelectric_calc'
 	pIs = pepid_arr.map do |pepid|
-	puts pepid.aaseq.inspect
 		calc_PI(identify_potential_charges(pepid.aaseq)) unless pepid.aaseq.nil?
 	end
 	pIs
@@ -30,18 +29,22 @@ def graph_pI_arr(pIs, filename)
 	require 'rserve/simpler'
 	robj = Rserve::Simpler.new
 	robj.converse(pi_values: hash.to_dataframe)
-	p robj.converse("pi_values$pi")
+	wd = robj.converse('getwd()')
 	robj.converse do 
 		%Q{
-			#png(file='/home/ryanmt/Dropbox/coding/isoelectric_calc_and_hist/pI_checker_#{filename}.png')
-			hist(pi_values$pi)
+			library(Cairo)
+			Cairo(file="/home/ryanmt/Dropbox/coding/pI_checker_#{filename}.svg', width=9.5, height=6.8, type='svg', units='in')
 		}
 	end
-	robj.pause
+	robj.converse do 
+		%Q{
+			hist(pi_values$pi,xlim=c(2,13))
+			dev.off()
+		}
+	end
 end
 
 ARGV.each do |file|
-	filename = File.basename(file).gsub(File.extname(file),'')
-	graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), filename)
+	graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), File.basename(file).gsub(File.extname(file),''))
 end
 		
