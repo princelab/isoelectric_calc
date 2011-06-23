@@ -41,6 +41,7 @@ def graph_pI_arr(pIs, filename)
 end
 
 ARGV.each do |file|
-	graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), "F002720")
+	filename = File.basename(file).gsub(File.extname(file),'')
+	graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), filename)
 end
 		
