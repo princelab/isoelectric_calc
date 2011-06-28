@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "isoelectic_calc_and_hist"
-  gem.homepage = "http://github.com/ryanmt/isoelectic_calc_and_hist"
+  gem.name = "isoelectric_calc_and_hist"
+  gem.homepage = "http://github.com/ryanmt/isoelectric_calc_and_hist"
   gem.license = "MIT"
   gem.summary = %Q{A pI calculator optimized for peptides which also features histogram graphing of the processed data.}
   gem.description = %Q{Implementation of a bisection pI calculator for Ruby.  Also included here is a graphing feature of a database via R.  The data accepted is a peptide centric database generated for the use of spectral counting (and available in the ms-quant gem)
@@ -49,7 +49,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "isoelectic_calc_and_hist #{version}"
+  rdoc.title = "isoelectric_calc_and_hist #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

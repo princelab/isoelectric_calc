@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{isoelectic_calc_and_hist}
+  s.name = %q{isoelectric_calc_and_hist}
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -25,6 +25,7 @@ pK values utilized are from wikipedia for the 21-nth amino acids, while the prim
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "isoelectic_calc_and_hist.gemspec",
     "lib/hist.rb",
     "lib/isoelectric_calc.rb",
     "lib/lookup_table.rb",
@@ -33,7 +34,7 @@ pK values utilized are from wikipedia for the 21-nth amino acids, while the prim
     "spec/spec_helper.rb",
     "test.yml"
   ]
-  s.homepage = %q{http://github.com/ryanmt/isoelectic_calc_and_hist}
+  s.homepage = %q{http://github.com/ryanmt/isoelectric_calc_and_hist}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.7.2}

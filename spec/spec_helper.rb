@@ -11,6 +11,8 @@ require 'bacon'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'isoelectic_calc_and_hist'
+require 'isoelectic_calc'
+require 'hist'
+require 'result_pI_checker'
 
 Bacon.summary_on_exit
