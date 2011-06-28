@@ -1,17 +1,41 @@
 #!/usr/bin/env ruby 
 # http://isoelectric.ovh.org/files/practise-isoelectric-point.html#mozTocId496531
 
-require 'yaml'
-require 'lookup_table'
 Precision = 0.001
-
+ResidueTable = {
+	:K => [2.18,8.95,10.53], 
+	:E => [2.19,9.67,4.25], 
+	:D => [1.88,9.60,3.65], 
+	:H => [1.82,9.17,6.00],
+	:R => [2.17,9.04,12.48],
+	:Q => [2.17,9.13,nil],
+	:N => [2.02,8.80,nil],
+	:C => [1.96,10.28,8.18],
+	:T => [2.11,9.62,nil],
+	:S => [2.21,9.15,nil],
+	:W => [2.38,9.39,nil],
+	:Y => [2.20,9.11,10.07],
+	:F => [1.83,9.13,nil],
+	:M => [2.28,9.21,nil],
+	:I => [2.36,9.68,nil],
+	:L => [2.36,9.60,nil],
+	:V => [2.32,9.62,nil],
+	:P => [1.99,10.96,nil],
+	:A => [2.34,9.69,nil],
+	:G => [2.34,9.60,nil],
+# These are the fringe cases... B and Z... Jerks, these are harder to calculate pIs
+	:B => [1.95,9.20,3.65],
+	:Z => [2.18,9.40,4.25],
+	:X => [2.20,9.40,nil],
+	:U => [1.96,10.28,5.20] # Unfortunately, I've only found the pKr for this... so I've used Cysteine's values.
+}
 PepCharges = Struct.new(:seq, :n_term, :c_term, :y_num, :c_num, :k_num, :h_num, :r_num, :d_num, :e_num, :pi)
 def identify_potential_charges(str)
 	string = str.upcase
 	first = string[0]; last = string[-1]
 	puts string if first.nil? or last.nil?
 	begin
-		out = PepCharges.new(string, Table[first.to_sym][0], Table[last.to_sym][1], 0, 0, 0 ,0 ,0 ,0, 0)
+		out = PepCharges.new(string, ResidueTable[first.to_sym][0], ResidueTable[last.to_sym][1], 0, 0, 0 ,0 ,0 ,0, 0)
 	rescue NoMethodError
 		abort string
 	end
@@ -39,14 +63,14 @@ end # Returns the PepCharges structure
 def charge_at_pH(pep_charges, pH)
 	charge = 0
 	charge += -1/(1+10**(pep_charges.c_term-pH))
-	charge += -pep_charges.d_num/(1+10**(Table[:D][2]-pH))
-	charge += -pep_charges.e_num/(1+10**(Table[:E][2]-pH))
-	charge += -pep_charges.c_num/(1+10**(Table[:C][2]-pH))
-	charge += -pep_charges.y_num/(1+10**(Table[:Y][2]-pH))
+	charge += -pep_charges.d_num/(1+10**(ResidueTable[:D][2]-pH))
+	charge += -pep_charges.e_num/(1+10**(ResidueTable[:E][2]-pH))
+	charge += -pep_charges.c_num/(1+10**(ResidueTable[:C][2]-pH))
+	charge += -pep_charges.y_num/(1+10**(ResidueTable[:Y][2]-pH))
 	charge += 1/(1+10**(pH - pep_charges.n_term))
-	charge += pep_charges.h_num/(1+10**(pH-Table[:H][2]))
-	charge += pep_charges.k_num/(1+10**(pH-Table[:K][2]))
-	charge += pep_charges.r_num/(1+10**(pH-Table[:R][2]))
+	charge += pep_charges.h_num/(1+10**(pH-ResidueTable[:H][2]))
+	charge += pep_charges.k_num/(1+10**(pH-ResidueTable[:K][2]))
+	charge += pep_charges.r_num/(1+10**(pH-ResidueTable[:R][2]))
 	charge
 end
 

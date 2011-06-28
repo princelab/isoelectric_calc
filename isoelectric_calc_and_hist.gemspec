@@ -25,12 +25,13 @@ pK values utilized are from wikipedia for the 21-nth amino acids, while the prim
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "isoelectic_calc_and_hist.gemspec",
+    "isoelectric_calc_and_hist-0.0.1.gem",
+    "isoelectric_calc_and_hist.gemspec",
     "lib/hist.rb",
     "lib/isoelectric_calc.rb",
     "lib/lookup_table.rb",
     "lib/result_pI_checker.rb",
-    "spec/isoelectic_calc_and_hist_spec.rb",
+    "spec/isoelectric_calc_and_hist_spec.rb",
     "spec/spec_helper.rb",
     "test.yml"
   ]
