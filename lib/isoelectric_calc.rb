@@ -29,7 +29,7 @@ ResidueTable = {
 	:X => [2.20,9.40,nil],
 	:U => [1.96,10.28,5.20] # Unfortunately, I've only found the pKr for this... so I've used Cysteine's values.
 }
-PepCharges = Struct.new(:seq, :n_term, :c_term, :y_num, :c_num, :k_num, :h_num, :r_num, :d_num, :e_num, :pi)
+PepCharges = Struct.new(:seq, :n_term, :c_term, :y_num, :c_num, :k_num, :h_num, :r_num, :d_num, :e_num, :polar_num, :hydrophobic_num, :pi)
 def identify_potential_charges(str)
 	string = str.upcase
 	first = string[0]; last = string[-1]
@@ -55,6 +55,10 @@ def identify_potential_charges(str)
 				out.d_num += 1
 			when "E"
 				out.e_num += 1
+			when "S" or "T" or "N" or "Q"
+				out.polar_num += 1
+			else
+				out.hydrophobic_num += 1
 		end
 	end
 	out
