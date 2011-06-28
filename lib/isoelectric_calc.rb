@@ -29,13 +29,13 @@ ResidueTable = {
 	:X => [2.20,9.40,nil],
 	:U => [1.96,10.28,5.20] # Unfortunately, I've only found the pKr for this... so I've used Cysteine's values.
 }
-PepCharges = Struct.new(:seq, :n_term, :c_term, :y_num, :c_num, :k_num, :h_num, :r_num, :d_num, :e_num, :polar_num, :hydrophobic_num, :pi)
+PepCharges = Struct.new(:seq, :n_term, :c_term, :y_num, :c_num, :k_num, :h_num, :r_num, :d_num, :e_num, :u_num, :polar_num, :hydrophobic_num, :pi)
 def identify_potential_charges(str)
 	string = str.upcase
 	first = string[0]; last = string[-1]
 	puts string if first.nil? or last.nil?
 	begin
-		out = PepCharges.new(string, ResidueTable[first.to_sym][0], ResidueTable[last.to_sym][1], 0, 0, 0 ,0 ,0 ,0, 0)
+		out = PepCharges.new(string, ResidueTable[first.to_sym][0], ResidueTable[last.to_sym][1], 0, 0, 0 ,0 ,0 ,0, 0, 0, 0, 0, 0)
 	rescue NoMethodError
 		abort string
 	end
@@ -55,9 +55,11 @@ def identify_potential_charges(str)
 				out.d_num += 1
 			when "E"
 				out.e_num += 1
-			when "S" or "T" or "N" or "Q"
+			when "U"
+				out.u_num += 1
+			when "S", "T", "N", "Q"
 				out.polar_num += 1
-			else
+			when "A", "V", "I", "L", "M", "F", "W", "G", "P"
 				out.hydrophobic_num += 1
 		end
 	end
@@ -115,5 +117,5 @@ end
 =end
 #out_pi = pepcharges.map {|a| calc_PI(a)}
 
-
+#require 'yaml'
 #File.open('pi_list.yml', 'w') {|f| YAML.dump( pi, f) }
