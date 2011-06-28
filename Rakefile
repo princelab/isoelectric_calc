@@ -17,8 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "isoelectic_calc_and_hist"
   gem.homepage = "http://github.com/ryanmt/isoelectic_calc_and_hist"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A pI calculator optimized for peptides which also features histogram graphing of the processed data.}
+  gem.description = %Q{Implementation of a bisection pI calculator for Ruby.  Also included here is a graphing feature of a database via R.  The data accepted is a peptide centric database generated for the use of spectral counting (and available in the ms-quant gem)
+http://isoelectric.ovh.org/files/practise-isoelectric-point.html#mozTocId496531
+pK values utilized are from wikipedia for the 21-nth amino acids, while the primary 20 amino acid values come from Lehninger's Biochemistry text, edition 4.}
   gem.email = "ryanmt@byu.net"
   gem.authors = ["Ryan Taylor"]
   # dependencies defined in Gemfile

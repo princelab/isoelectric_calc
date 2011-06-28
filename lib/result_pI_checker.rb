@@ -39,9 +39,10 @@ def graph_pI_arr(pIs, filename)
 	robj.converse do 
 		%Q{
 			hist(pi_values$pi,xlim=c(2,13))
-			dev.off()
 		}
 	end
+	robj.pause
+	robj.converse("dev.off()")
 end
 
 ARGV.each do |file|
