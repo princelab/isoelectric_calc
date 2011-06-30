@@ -44,8 +44,8 @@ def graph_pI_arr(pIs, filename)
 	robj.pause
 	robj.converse("dev.off()")
 end
-p File.basename(__FILE__)
-if File.basename(__FILE__) == 'result_pI_checker.rb'
+p File.basename($0)
+if File.basename($0) == 'result_pI_checker.rb'
 	ARGV.each do |file|
 		graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), File.basename(file).gsub(File.extname(file),''))
 	end
