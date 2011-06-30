@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{isoelectric_calc_and_hist}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ryan Taylor"]
-  s.date = %q{2011-06-28}
+  s.date = %q{2011-06-30}
   s.description = %q{Implementation of a bisection pI calculator for Ruby.  Also included here is a graphing feature of a database via R.  The data accepted is a peptide centric database generated for the use of spectral counting (and available in the ms-quant gem)
 http://isoelectric.ovh.org/files/practise-isoelectric-point.html#mozTocId496531
 pK values utilized are from wikipedia for the 21-nth amino acids, while the primary 20 amino acid values come from Lehninger's Biochemistry text, edition 4.}
@@ -25,7 +25,6 @@ pK values utilized are from wikipedia for the 21-nth amino acids, while the prim
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "isoelectric_calc_and_hist-0.0.1.gem",
     "isoelectric_calc_and_hist.gemspec",
     "lib/hist.rb",
     "lib/isoelectric_calc.rb",

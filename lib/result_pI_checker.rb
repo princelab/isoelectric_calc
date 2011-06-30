@@ -1,6 +1,6 @@
 PepID = Struct.new(:aaseq, :charge, :scan_num, :time)
 
-def parse_pepxml(file)
+def parse_pepxml(file)  # Generates an array of pepids.
 	require 'nokogiri'	# This is from the run_compare code I wrote
 	doc = Nokogiri.XML(File.open(file))
 	pepids = []
@@ -44,8 +44,9 @@ def graph_pI_arr(pIs, filename)
 	robj.pause
 	robj.converse("dev.off()")
 end
-
-ARGV.each do |file|
-	graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), File.basename(file).gsub(File.extname(file),''))
-end
-		
+p File.basename(__FILE__)
+if File.basename(__FILE__) == 'result_pI_checker.rb'
+	ARGV.each do |file|
+		graph_pI_arr(pepids_to_pIs(parse_pepxml(file)), File.basename(file).gsub(File.extname(file),''))
+	end
+end	
